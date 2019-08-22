@@ -13,7 +13,7 @@
 <body>
     <nav class="navbar navbar-dark bg-dark mb-3">
         <div class="container">
-            <span class="navbar-brand mb-0 h1">My Chat App</span>
+            <span class="navbar-brand mb-0 h1">My Stupid-Chat App</span>
         </div>
     </nav>
     <div class="container">

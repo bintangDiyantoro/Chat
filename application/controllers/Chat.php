@@ -5,8 +5,12 @@ class Chat extends CI_Controller
 {
     public function index()
     {
-        $this->session->set_userdata('name', $this->input->post('username'));
-        $user = $this->session->userdata('name');
+        if ($this->input->post('username')) {
+            $user = $this->input->post('username');
+            $this->session->set_userdata('name', $user);
+        } else {
+            $user = $this->session->userdata('name');
+        }
         $data['user'] = $user;
         $data['title'] = "Chat";
         $data['contents'] = $this->db->get('message')->result_array();
@@ -17,8 +21,15 @@ class Chat extends CI_Controller
     public function send()
     {
         $input = ['name' => $this->input->post('name'), 'content' => $this->input->post('content')];
-        $data['user'] = $this->input->post('name');
-        $this->db->insert('message', $input);
+        if ($this->input->post('name')) {
+            $data['user'] = $this->input->post('name');
+        } else {
+            $data['user'] = $this->session->userdata('name');
+        }
+
+        if ($this->input->post('content') !== null) {
+            $this->db->insert('message', $input);
+        }
         // redirect('chat');
         $data['title'] = "Chat";
         $data['contents'] = $this->db->get('message')->result_array();
@@ -26,6 +37,13 @@ class Chat extends CI_Controller
         $this->load->view('chat/index', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    public function content()
+    {
+        $data['contents'] = $this->db->get('message')->result_array();
+        $this->load->view('content/index', $data);
+    }
+
     public function logout()
     {
         $this->db->empty_table('message');
