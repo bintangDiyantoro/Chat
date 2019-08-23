@@ -3,11 +3,11 @@
         <div class="container chat-content">
         </div>
     </div>
-    <form action="<?= base_url('chat/send') ?>" method="post">
+    <form action="" method="">
         <div class="form-group">
             <input type="hidden" name="name" value="<?= $user ?>">
             <textarea name="content" id="content" cols="74" rows="3" autofocus></textarea>
-            <button type="submit" name="submit" class="btn btn-primary">Send</button>
+            <button type="button" name="submit" class="btn btn-primary send">Send</button>
         </div>
     </form>
 

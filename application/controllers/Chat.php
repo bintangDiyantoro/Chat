@@ -32,7 +32,7 @@ class Chat extends CI_Controller
         }
         // redirect('chat');
         $data['title'] = "Chat";
-        $data['contents'] = $this->db->get('message')->result_array();
+        // $data['contents'] = $this->db->get('message')->result_array();
         $this->load->view('templates/header', $data);
         $this->load->view('chat/index', $data);
         $this->load->view('templates/footer', $data);
