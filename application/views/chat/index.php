@@ -6,7 +6,7 @@
     <form action="" method="">
         <div class="form-group">
             <input type="hidden" name="name" value="<?= $user ?>">
-            <textarea name="content" id="content" cols="74" rows="3" autofocus></textarea>
+            <textarea class="form-control" name="content" id="content" rows="3" autofocus></textarea>
             <button type="button" name="submit" class="btn btn-primary send">Send</button>
         </div>
     </form>
